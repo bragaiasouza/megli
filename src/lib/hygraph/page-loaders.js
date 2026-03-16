@@ -12,7 +12,17 @@ function slugify(value) {
 function propertySlugFromLocation() {
   var pathSegments = window.location.pathname.split('/').filter(Boolean);
   var imovelIndex = pathSegments.indexOf('imovel');
-  return imovelIndex > -1 ? pathSegments[imovelIndex + 1] : '';
+  var slug = imovelIndex > -1 ? pathSegments[imovelIndex + 1] : '';
+
+  if (!slug) {
+    return '';
+  }
+
+  try {
+    return decodeURIComponent(slug);
+  } catch (_error) {
+    return slug;
+  }
 }
 
 var IMOVEL_FIELDS = `
@@ -86,14 +96,15 @@ var PAGE_LOADERS = {
   },
   property: async function ({ request }) {
     var slug = propertySlugFromLocation();
+    var normalizedSlug = slugify(slug);
     var id = new URLSearchParams(window.location.search).get('id');
 
-    if (!slug && !id) {
+    if (!normalizedSlug && !id) {
       return null;
     }
 
     if (id) {
-      return request(
+      var payloadById = await request(
         `
           query PropertyPageById($stage: Stage!, $id: ID!) {
             imovel(stage: $stage, where: { id: $id }) {
@@ -106,6 +117,10 @@ var PAGE_LOADERS = {
         `,
         { id: id },
       );
+
+      if (payloadById && payloadById.imovel) {
+        return payloadById;
+      }
     }
 
     var payload = await request(
@@ -123,7 +138,7 @@ var PAGE_LOADERS = {
     var imovels = payload && payload.imovels ? payload.imovels : [];
     var imovel =
       imovels.find(function (item) {
-        return slugify(item.nome) === slug;
+        return slugify(item.nome) === normalizedSlug;
       }) || null;
 
     return {

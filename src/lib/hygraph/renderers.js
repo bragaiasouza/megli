@@ -78,10 +78,13 @@ function buildListingCard(imovel) {
   var imageAlt = image && image.fileName ? image.fileName : imovel.nome;
   var code = imovel.id ? imovel.id.slice(0, 6).toUpperCase() : '000000';
   var pathSlug = slugify(imovel.nome);
+  var propertyUrl = imovel.id
+    ? '/imovel/' + pathSlug + '/?id=' + encodeURIComponent(imovel.id)
+    : '/imovel/' + pathSlug + '/';
 
   return `
     <li class="${document.body.dataset.page === 'home' ? 'splide__slide' : ''}">
-      <a href="/imovel/${pathSlug}/" title="Acessar imóvel">
+      <a href="${propertyUrl}" title="Acessar imóvel">
         <article>
           <figure>
             <div class="tags">${buildTags(imovel)}</div>

@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/imovel/:slug/",
+      "destination": "/imovel/"
+    },
+    {
       "source": "/imovel/:slug",
       "destination": "/imovel/"
     }
