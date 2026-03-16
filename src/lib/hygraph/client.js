@@ -1,6 +1,6 @@
 var endpoint = import.meta.env.VITE_HYGRAPH_ENDPOINT;
 var token = import.meta.env.VITE_HYGRAPH_TOKEN;
-var stage = import.meta.env.VITE_HYGRAPH_STAGE || 'DRAFT';
+var stage = import.meta.env.VITE_HYGRAPH_STAGE || 'PUBLISHED';
 
 export function hasHygraphConfig() {
   return Boolean(endpoint);
