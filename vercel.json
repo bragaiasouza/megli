@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/imovel/:slug/",
-      "destination": "/imovel/"
+      "destination": "/imovel/index.html"
     },
     {
       "source": "/imovel/:slug",
-      "destination": "/imovel/"
+      "destination": "/imovel/index.html"
     }
   ]
 }
