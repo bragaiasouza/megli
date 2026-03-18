@@ -1,10 +1,14 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 function singlePropertyRewrite() {
   function rewritePropertyUrl(req, _res, next) {
-    if (req.url && /^\/imovel\/[^/?#]+\/?$/.test(req.url)) {
+    var requestUrl = req.url || '';
+    var pathname = requestUrl.split('?')[0].split('#')[0];
+
+    if (pathname && /^\/imovel\/[^/?#]+\/?$/.test(pathname)) {
       req.url = '/imovel/index.html';
     }
 
@@ -104,7 +108,7 @@ function generateStaticPropertyPages() {
 
 export default defineConfig({
   appType: 'mpa',
-  plugins: [singlePropertyRewrite(), generateStaticPropertyPages()],
+  plugins: [react(), singlePropertyRewrite(), generateStaticPropertyPages()],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),

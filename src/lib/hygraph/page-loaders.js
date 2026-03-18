@@ -65,6 +65,8 @@ var FOOTER_IMOVEL_FIELDS = `
   bairro
 `;
 
+var PROPERTY_LOOKUP_LIMIT = 500;
+
 var PAGE_LOADERS = {
   home: async function ({ request }) {
     return request(
@@ -126,7 +128,7 @@ var PAGE_LOADERS = {
     var payload = await request(
       `
         query PropertyPageBySlug($stage: Stage!) {
-          imovels(stage: $stage, first: 100) {
+          imovels(stage: $stage, first: ${PROPERTY_LOOKUP_LIMIT}) {
             ${IMOVEL_FIELDS}
           }
           footerImovels: imovels(stage: $stage, first: 100, orderBy: publishedAt_DESC) {

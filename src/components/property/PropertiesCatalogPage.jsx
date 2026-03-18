@@ -1,0 +1,85 @@
+import PropertyCard from './PropertyCard.jsx';
+
+var FILTER_GROUPS = [
+  { title: 'Tipo de negócio', options: ['Todos', 'Comprar', 'Alugar', 'Por temporada'], active: 'Todos' },
+  { title: 'Fase do empreendimento', options: ['Todos', 'Lançamento', 'Em obras', 'Prontos'], active: '' },
+];
+
+var PLACEHOLDER_PROPERTIES = Array.from({ length: 6 }, function (_, index) {
+  return {
+    id: index,
+    href: '',
+    locality: 'São Paulo - Higienópolis',
+    type: 'Apartamento',
+    code: 'COD. 0000',
+    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultricies ligula sit amet tortor.',
+    image: { src: '/assets/img/_temp/1.png', alt: 'Foto do imóvel' },
+    specs: [
+      { icon: 'area', label: '100m2' },
+      { icon: 'bath', label: '01' },
+      { icon: 'bath', label: '02' },
+      { icon: 'garage', label: '03' },
+    ],
+  };
+});
+
+function FilterGroup({ group }) {
+  return (
+    <div className="item">
+      <strong>{group.title}</strong>
+      <div className="list flex align-center justify-between">
+        {group.options.map(function (option) {
+          return <span key={option} className={group.active === option ? 'on' : undefined}>{option}</span>;
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default function PropertiesCatalogPage() {
+  return (
+    <>
+      <section className="filter-toggle-wrap">
+        <button type="button" className="filter-toggle-button" aria-controls="filter" aria-expanded="false">Abrir filtro</button>
+      </section>
+      <section id="filter">
+        <div className="container flex align-end justify-between">
+          {FILTER_GROUPS.map(function (group) {
+            return <FilterGroup key={group.title} group={group} />;
+          })}
+          <div className="item item-right flex align-end justify-between">
+            <div className="item-2">
+              <strong>Cidade</strong>
+              <select><option value="">Todas</option></select>
+            </div>
+            <div className="item-2">
+              <strong>Bairro</strong>
+              <select><option value="">Todos</option></select>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="estate">
+        <div className="container">
+          <div>
+            <ul className="grid">
+              {PLACEHOLDER_PROPERTIES.map(function (property) {
+                return <PropertyCard key={property.id} property={property} />;
+              })}
+            </ul>
+          </div>
+          <div className="pagination">
+            <ul className="flex align-center">
+              <li><a href=""><svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.625 10.625L0.625 5.625L5.625 0.625" stroke="#464646" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" /></svg></a></li>
+              <li className="on"><a href="">1</a></li>
+              <li><a href="">2</a></li>
+              <li>...</li>
+              <li><a href="">10</a></li>
+              <li><a href=""><svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.625 0.625L5.625 5.625L0.625 10.625" stroke="#464646" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" /></svg></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

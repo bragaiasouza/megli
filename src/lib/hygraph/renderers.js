@@ -25,6 +25,14 @@ function categoryLabel(value) {
   }[value] || value;
 }
 
+function propertyCategoryRoute(value) {
+  return {
+    venda: '/imoveis/comprar',
+    aluguel: '/imoveis/alugar',
+    temporada: '/imoveis/temporada',
+  }[value] || '';
+}
+
 function phaseLabel(value) {
   return {
     lancamento: 'Lançamento',
@@ -78,9 +86,7 @@ function buildListingCard(imovel) {
   var imageAlt = image && image.fileName ? image.fileName : imovel.nome;
   var code = imovel.id ? imovel.id.slice(0, 6).toUpperCase() : '000000';
   var pathSlug = slugify(imovel.nome);
-  var propertyUrl = imovel.id
-    ? '/imovel/' + pathSlug + '/?id=' + encodeURIComponent(imovel.id)
-    : '/imovel/' + pathSlug + '/';
+  var propertyUrl = '/imovel/' + pathSlug + '/';
 
   return `
     <li class="${document.body.dataset.page === 'home' ? 'splide__slide' : ''}">
@@ -604,6 +610,12 @@ function renderProperty(data) {
   }
 
   populateFooterCollections(data && data.footerImovels ? data.footerImovels : [imovel]);
+
+  if (imovel.categoria) {
+    document.body.dataset.propertyCategoryRoute = propertyCategoryRoute(imovel.categoria);
+  } else {
+    delete document.body.dataset.propertyCategoryRoute;
+  }
 
   var topCategory = document.querySelector('#single article .top > span');
   var heading = document.querySelector('#single article h1');

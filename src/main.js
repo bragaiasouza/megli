@@ -4,6 +4,7 @@ import { bootHygraph } from './lib/hygraph/bootstrap.js';
 import { renderPage } from './lib/hygraph/renderers.js';
 
 var propertiesPayload = null;
+var hasInitialized = false;
 
 function normalizePath(path) {
   return (path || '/').replace(/\/+$/, '') || '/';
@@ -126,25 +127,35 @@ function initImageReveal() {
 }
 
 function initActiveMenu() {
-  var currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  function syncActiveMenu() {
+    var currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+    var propertyCategoryRoute = document.body.dataset.propertyCategoryRoute || '';
+    var activePath =
+      document.body.dataset.page === 'property' && propertyCategoryRoute
+        ? propertyCategoryRoute
+        : currentPath;
 
-  document.querySelectorAll('#header nav li, #sidebar nav li').forEach(function (item) {
-    item.classList.remove('on');
-  });
-
-  document
-    .querySelectorAll('#header nav a, #sidebar nav a')
-    .forEach(function (link) {
-      var linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
-
-      if (linkPath === currentPath) {
-        var item = link.closest('li');
-
-        if (item) {
-          item.classList.add('on');
-        }
-      }
+    document.querySelectorAll('#header nav li, #sidebar nav li').forEach(function (item) {
+      item.classList.remove('on');
     });
+
+    document
+      .querySelectorAll('#header nav a, #sidebar nav a')
+      .forEach(function (link) {
+        var linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
+
+        if (linkPath === activePath) {
+          var item = link.closest('li');
+
+          if (item) {
+            item.classList.add('on');
+          }
+        }
+      });
+  }
+
+  syncActiveMenu();
+  document.addEventListener('megli:content-updated', syncActiveMenu);
 }
 
 function initSidebar() {
@@ -537,7 +548,12 @@ function initGallerySplide() {
   }).mount();
 }
 
-async function initApp() {
+export async function initDomApp() {
+  if (hasInitialized) {
+    return;
+  }
+
+  hasInitialized = true;
   initPropertiesShell();
   initImageReveal();
   initActiveMenu();
@@ -551,12 +567,4 @@ async function initApp() {
   initLightbox();
   initHomeSplide();
   initGallerySplide();
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function () {
-    initApp();
-  });
-} else {
-  initApp();
 }
