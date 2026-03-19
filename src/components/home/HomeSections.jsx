@@ -44,7 +44,7 @@ export function HeroSection() {
       <article>
         <small>Megli Negócios Imobiliários</small>
         <h2>Os melhores imóveis para <strong className="hero-rotator" data-hero-texts="morar com qualidade|investir com segurança|locação por temporada"><span className="hero-rotator__current">alugar por temporada</span><span className="hero-rotator__sizer" aria-hidden="true">alugar com tranquilidade</span></strong></h2>
-        <p>Seja para morar ou investir, da consultoria à gestão de short stay, cuidamos do seu patrimônio com toda a atenção que você merece</p>
+        <p>Seja para morar ou investir, da consultoria à gestão de short stay, cuidamos do seu patrimônio com toda a atenção que você merece.</p>
         <div className="box">
           <strong className="flex align-center"><span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.34437 8.40031C4.20631 8.25637 4.09884 8.08595 4.02845 7.89933C3.95806 7.71272 3.92621 7.51377 3.93482 7.31451C3.94343 7.11524 3.99231 6.91979 4.07853 6.73993C4.16475 6.56008 4.28651 6.39956 4.43647 6.26806C4.58643 6.13655 4.76148 6.0368 4.95105 5.9748C5.14062 5.91281 5.34079 5.88986 5.53947 5.90735C5.73815 5.92484 5.93124 5.9824 6.10706 6.07655C6.28289 6.17071 6.43782 6.29951 6.5625 6.45519C6.68778 6.30114 6.84285 6.17394 7.01842 6.0812C7.194 5.98846 7.38647 5.93208 7.58434 5.91544C7.78221 5.89881 7.98139 5.92225 8.16999 5.98437C8.35859 6.04648 8.53272 6.146 8.68197 6.27697C8.83121 6.40794 8.95251 6.56766 9.03861 6.74659C9.1247 6.92552 9.17383 7.11997 9.18304 7.31832C9.19225 7.51667 9.16136 7.71484 9.09221 7.90098C9.02307 8.08711 8.91709 8.25739 8.78063 8.40163L7.05731 10.2759C6.99583 10.3467 6.91987 10.4034 6.83456 10.4423C6.74925 10.4812 6.65659 10.5014 6.56283 10.5014C6.46907 10.5014 6.3764 10.4812 6.29109 10.4423C6.20578 10.4034 6.12982 10.3467 6.06834 10.2759L4.34437 8.40031Z" stroke="#FFD14E" strokeWidth="1.3125" strokeLinecap="round" strokeLinejoin="round" /><path d="M0.65625 5.90656C0.656204 5.71564 0.697813 5.527 0.778173 5.35382C0.858534 5.18063 0.975711 5.02706 1.12153 4.90381L5.71528 0.966315C5.95218 0.766098 6.25233 0.65625 6.5625 0.65625C6.87267 0.65625 7.17282 0.766098 7.40972 0.966315L12.0035 4.90381C12.1493 5.02706 12.2665 5.18063 12.3468 5.35382C12.4272 5.527 12.4688 5.71564 12.4688 5.90656V11.8128C12.4688 12.1609 12.3305 12.4948 12.0843 12.7409C11.8382 12.987 11.5043 13.1253 11.1562 13.1253H1.96875C1.62065 13.1253 1.28681 12.987 1.04067 12.7409C0.794531 12.4948 0.65625 12.1609 0.65625 11.8128V5.90656Z" stroke="#FFD14E" strokeWidth="1.3125" strokeLinecap="round" strokeLinejoin="round" /></svg></span> Encontre o que é melhor para você</strong>
           <div className="list grid">
@@ -65,8 +65,8 @@ export function FeaturedCarouselSection() {
     <section id="carousel">
       <div className="container">
         <header className="head">
-          <small>Exclusividade</small>
-          <strong>Exclusividade <b>por Oportunidades</b></strong>
+          <small>Oportunidades</small>
+          <strong>Imóveis <b>em destaque</b></strong>
         </header>
         <section className="slide splide" aria-label="Imoveis em destaque">
           <div className="splide__track">
