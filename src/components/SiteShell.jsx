@@ -234,6 +234,10 @@ export function SiteFooter() {
             </nav>
           </div>
         </div>
+        <div className="creci">
+          <p>CRECI 031996J</p>
+          <p className="devz">Desenvolvido por <img src="/assets/img/logo-devz.svg" alt="DevzDesign" /></p>
+        </div>
       </div>
     </footer>
   );

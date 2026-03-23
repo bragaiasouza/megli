@@ -8,7 +8,7 @@ export default function AboutPage() {
                   <p>Desde 2018, a Megli Negócios Imobiliários atua com foco em qualidade, transparência e excelência no atendimento, oferecendo soluções completas para morar, investir ou rentabilizar.</p>
               </div>
               <div className="side flex align-center">
-                  <figure><img src="/assets/img/about-img.png" alt="Fundada em 2018" /></figure>
+                  <figure></figure>
                   <article>
                       <h2>Fundada em 2018</h2>
                       <p>A Megli Negócios Imobiliários é especializada na venda de imóveis para moradia ou investimento, gestão de locação por temporada, locação de longo prazo e consultoria imobiliária.</p>
@@ -47,8 +47,8 @@ export default function AboutPage() {
                   <p>Juliana e Mara Silvia compartilham experiências complementares e trabalham em perfeita sinergia intergeracional. Essa união fortalece a visão da Megli, resultando em soluções estratégicas e inovadoras para clientes que buscam segurança, rentabilidade e qualidade no setor imobiliário.</p>
               </header>
               <div className="grid grid-2 imgs">
-                  <figure><img src="/assets/img/sobre-power-img1.png" alt="Imagem" /></figure>
-                  <figure><img src="/assets/img/sobre-power-img2.png" alt="Imagem" /></figure>
+                  <figure></figure>
+                  <figure></figure>
               </div>
               <header>
                   <h2>Nossa <strong>Missão e Valores</strong></h2>

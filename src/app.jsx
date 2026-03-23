@@ -26,9 +26,25 @@ var PAGE_COMPONENTS = {
   contact: ContactPage,
 };
 
+var PAGE_TITLES = {
+  home: 'Megli Negócios Imobiliários | Compra, Aluguel e Short Stay',
+  properties: 'Imóveis | Megli Negócios Imobiliários',
+  propertiesComprar: 'Imóveis para Comprar | Megli Negócios Imobiliários',
+  propertiesAlugar: 'Imóveis para Alugar | Megli Negócios Imobiliários',
+  propertiesTemporada: 'Locação por Temporada | Megli Negócios Imobiliários',
+  property: 'Imóvel | Megli Negócios Imobiliários',
+  about: 'Sobre a Megli | Megli Negócios Imobiliários',
+  consulting: 'Consultoria Imobiliária | Megli Negócios Imobiliários',
+  contact: 'Contato | Megli Negócios Imobiliários',
+};
+
 function PageContent() {
   var appPage = document.body.dataset.appPage || document.body.dataset.page || 'home';
   var Component = PAGE_COMPONENTS[appPage] || HomePage;
+
+  useEffect(function () {
+    document.title = PAGE_TITLES[appPage] || 'Megli Negócios Imobiliários';
+  }, [appPage]);
 
   return (
     <div id="page-content">
