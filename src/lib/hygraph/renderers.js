@@ -611,6 +611,10 @@ function renderProperty(data) {
 
   populateFooterCollections(data && data.footerImovels ? data.footerImovels : [imovel]);
 
+  if (imovel.nome) {
+    document.title = imovel.nome + ' | Megli Negócios Imobiliários';
+  }
+
   if (imovel.categoria) {
     document.body.dataset.propertyCategoryRoute = propertyCategoryRoute(imovel.categoria);
   } else {
