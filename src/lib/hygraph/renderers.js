@@ -217,6 +217,13 @@ function renderProperties(data) {
   var currentPage = Math.max(1, Number(searchParams.get('page') || 1));
   var initialCity = searchParams.get('cidade') || '';
   var initialBairro = searchParams.get('bairro') || '';
+  var currentSearchTerm = searchParams.get('q') || '';
+  var catalogSearchInput = document.querySelector('#catalog-search .search-box input');
+  var catalogSearchBtn = document.querySelector('#catalog-search .search-btn');
+
+  if (catalogSearchInput && currentSearchTerm) {
+    catalogSearchInput.value = currentSearchTerm;
+  }
   var itemsPerPage = 12;
   var gridRevealTimer = null;
   var lastGridSignature = '';
@@ -378,6 +385,7 @@ function renderProperties(data) {
     var cityValue = citySelect ? citySelect.value : '';
     var bairroValue = bairroSelect ? bairroSelect.value : '';
 
+    var searchTerm = currentSearchTerm.toLowerCase().trim();
     var items = visibleImovels.filter(function (item) {
       if (phaseValue && item.fase !== phaseValue) {
         return false;
@@ -389,6 +397,14 @@ function renderProperties(data) {
 
       if (bairroValue && item.bairro !== bairroValue) {
         return false;
+      }
+
+      if (searchTerm) {
+        var code = item.id ? item.id.slice(0, 6).toUpperCase() : '';
+        var name = (item.nome || '').toLowerCase();
+        if (!name.includes(searchTerm) && !code.toLowerCase().includes(searchTerm)) {
+          return false;
+        }
       }
 
       return true;
@@ -542,6 +558,23 @@ function renderProperties(data) {
   if (!bairroSelect) {
     refreshNeighborhoods(initialCity);
   }
+
+  if (catalogSearchInput) {
+    catalogSearchInput.addEventListener('input', function () {
+      currentSearchTerm = catalogSearchInput.value.trim();
+      currentPage = 1;
+      renderGrid();
+    });
+  }
+
+  if (catalogSearchBtn) {
+    catalogSearchBtn.addEventListener('click', function () {
+      currentSearchTerm = catalogSearchInput ? catalogSearchInput.value.trim() : '';
+      currentPage = 1;
+      renderGrid();
+    });
+  }
+
   renderGrid();
 }
 

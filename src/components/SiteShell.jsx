@@ -227,7 +227,7 @@ export function SiteFooter() {
                 })}
                 <li>
                   <a href={'mailto:' + CONTACT.email} title="Fale por email">
-                    {CONTACT.email}
+                    meglinegocios<wbr />imobiliarios@gmail.com
                   </a>
                 </li>
               </ul>

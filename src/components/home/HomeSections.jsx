@@ -53,6 +53,13 @@ export function HeroSection() {
             <span>Alugar</span>
             <span>Locação por temporada</span>
           </div>
+          <div className="search-wrap">
+            <div className="search-box">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="#A0A0A0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <input type="text" placeholder="Buscar por nome ou código do imóvel..." />
+            </div>
+            <button type="button" className="search-btn">Buscar</button>
+          </div>
           <button>Busque por todos imóveis <svg width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.708374 6.70831L3.70837 3.70831L0.708374 0.708313" stroke="#FFD14E" strokeWidth="1.41667" strokeLinecap="round" strokeLinejoin="round" /></svg></button>
         </div>
       </article>

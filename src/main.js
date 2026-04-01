@@ -204,7 +204,9 @@ function initHeroSearch() {
   }
 
   var options = Array.prototype.slice.call(heroBox.querySelectorAll('.list span'));
-  var button = heroBox.querySelector('button');
+  var mainButton = heroBox.querySelector('button:not(.search-btn)');
+  var searchBtn = heroBox.querySelector('.search-btn');
+  var searchInput = heroBox.querySelector('.search-box input');
   var routes = {
     Comprar: '/imoveis/comprar/',
     Alugar: '/imoveis/alugar/',
@@ -223,14 +225,30 @@ function initHeroSearch() {
     });
   });
 
-  if (!button) {
-    return;
+  function navigateWithSearch() {
+    var term = searchInput ? searchInput.value.trim() : '';
+    var base = routes[selectedOption] || '/imoveis/';
+    window.location.href = term ? base + '?q=' + encodeURIComponent(term) : base;
   }
 
-  button.addEventListener('click', function () {
-    var target = routes[selectedOption] || '/imoveis/';
-    window.location.href = target;
-  });
+  if (searchBtn) {
+    searchBtn.addEventListener('click', navigateWithSearch);
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter') {
+        navigateWithSearch();
+      }
+    });
+  }
+
+  if (mainButton) {
+    mainButton.addEventListener('click', function () {
+      var target = routes[selectedOption] || '/imoveis/';
+      window.location.href = target;
+    });
+  }
 }
 
 function initHeroRotator() {
