@@ -231,7 +231,8 @@ input[type=submit], button { transition: all .5s ease; }
 .slide figure img.is-loaded { filter: none; transform: none; }
 .slide figure .tags { position: absolute; z-index: 2; top: 20px; left: 20px; display: flex; align-items: center; gap: 8px; }
 .slide figure .tags span { padding: 6px 10px; border-radius: 20px; font-size: 12px; text-transform: uppercase; }
-.slide figure .star-badge { position: absolute; z-index: 2; top: 16px; right: 16px; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.92); border-radius: 50%; backdrop-filter: blur(4px); }
+.slide figure .star-badge,
+#estate article figure .star-badge { position: absolute; z-index: 2; top: 16px; right: 16px; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.92); border-radius: 50%; backdrop-filter: blur(4px); }
 .slide .splide__arrows { position: absolute; top: -94px; right: 0px; display: flex; gap: 12px; }
 .slide .splide__arrow { position: static; transform: none; width: 52px; height: 52px; background: var(--yellow); opacity: 1; }
 .slide .splide__arrow svg { display: none; }
