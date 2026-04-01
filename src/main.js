@@ -43,6 +43,7 @@ function initPropertiesShell() {
     return;
   }
 
+  syncListingCategoryFromPath(window.location.pathname);
   var categoryRoute = document.body.dataset.listingCategory || '';
   var labels = {
     comprar: 'Comprar',
@@ -222,6 +223,11 @@ function initHeroSearch() {
 
       option.classList.add('on');
       selectedOption = option.textContent.trim();
+
+      var target = routes[selectedOption];
+      if (target) {
+        window.location.href = target;
+      }
     });
   });
 

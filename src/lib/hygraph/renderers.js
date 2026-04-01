@@ -679,13 +679,13 @@ function renderProperty(data) {
     (imovel.metragem || 0) +
     'm2</span>' +
     '<span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4L6.5 6.5M13.5 6.5C12.5686 5.58718 11.3145 5.07883 10.0104 5.08542C8.70621 5.09201 7.45736 5.613 6.53518 6.53518C5.613 7.45736 5.09201 8.70621 5.08542 10.0104C5.07883 11.3145 5.58718 12.5686 6.5 13.5M15 5L5 15M14 17V17.01M10 16V16.01M13 13V13.01M16 10V10.01M11 20V20.01M17 14V14.01M20 11V11.01" stroke="#FFD14E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> ' +
-    pluralize(imovel.banheiro, 'banheiro', 'banheiros') +
+    (imovel.banheiro || 0) +
     '</span>' +
     '<span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 20V12C3 11.4696 3.21071 10.9609 3.58579 10.5858C3.96086 10.2107 4.46957 10 5 10M5 10H19M5 10V6C5 5.46957 5.21071 4.96086 5.58579 4.58579C5.96086 4.21071 6.46957 4 7 4H17C17.5304 4 18.0391 4.21071 18.4142 4.58579C18.7893 4.96086 19 5.46957 19 6V10M19 10C19.5304 10 20.0391 10.2107 20.4142 10.5858C20.7893 10.9609 21 11.4696 21 12V20M3 18H21" stroke="#FFD14E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> ' +
-    pluralize(imovel.quarto, 'quarto', 'quartos') +
+    (imovel.quarto || 0) +
     '</span>' +
     '<span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 7.99998L19 9.99998M19 9.99998L17.5 6.29998C17.3585 5.92131 17.1057 5.5944 16.7747 5.36233C16.4437 5.13026 16.0502 5.00393 15.646 4.99998H8.4C7.9925 4.99062 7.59188 5.10599 7.25177 5.33064C6.91166 5.5553 6.64832 5.8785 6.497 6.25698L5 9.99998M19 9.99998H5M19 9.99998C20.1046 9.99998 21 10.8954 21 12V16C21 17.1045 20.1046 18 19 18M5 9.99998L3 7.99998M5 9.99998C3.89543 9.99998 3 10.8954 3 12V16C3 17.1045 3.89543 18 5 18M7 14H7.01M17 14H17.01M19 18H5M19 18V20M5 18V20" stroke="#FFD14E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> ' +
-    pluralize(imovel.vaga, 'vaga', 'vagas') +
+    (imovel.vaga || 0) +
     '</span>';
 
   var paragraphs = (imovel.descricao || '').split(/\n+/).filter(Boolean);
@@ -702,7 +702,8 @@ function renderProperty(data) {
 
   featuredList.innerHTML = (imovel.caracteristicas || [])
     .map(function (item) {
-      return '<span>' + item + '</span>';
+      var label = item.replace(/([A-Z])/g, ' $1').replace(/^./, function (c) { return c.toUpperCase(); });
+      return '<span>' + label + '</span>';
     })
     .join('');
 
