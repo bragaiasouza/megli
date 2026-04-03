@@ -53,6 +53,15 @@ function PropertySidebar() {
 export default function PropertyDetailSections() {
   return (
     <>
+      <div id="gallery-lightbox" className="lightbox" aria-hidden="true">
+        <div className="lightbox__dialog">
+          <img className="lightbox__image" src="" alt="" />
+          <span className="lightbox__caption"></span>
+          <button className="lightbox__close" aria-label="Fechar galeria"></button>
+          <button className="lightbox__nav lightbox__nav--prev" aria-label="Imagem anterior"></button>
+          <button className="lightbox__nav lightbox__nav--next" aria-label="Próxima imagem"></button>
+        </div>
+      </div>
       <GallerySection />
       <section id="single">
         <div className="container flex align-start">
