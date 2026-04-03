@@ -51,24 +51,22 @@ export default function PropertiesCatalogPage() {
         <button type="button" className="filter-toggle-button" aria-controls="filter" aria-expanded="false">Abrir filtro</button>
       </section>
       <section id="filter">
-        <div className="container flex align-end justify-between">
-          {FILTER_GROUPS.map(function (group) {
-            return <FilterGroup key={group.title} group={group} />;
-          })}
-          <div className="item item-right flex align-end justify-between">
-            <div className="item-2">
-              <strong>Cidade</strong>
-              <select><option value="">Todas</option></select>
-            </div>
-            <div className="item-2">
-              <strong>Bairro</strong>
-              <select><option value="">Todos</option></select>
+        <div className="container">
+          <div className="filter-main flex align-end justify-between">
+            {FILTER_GROUPS.map(function (group) {
+              return <FilterGroup key={group.title} group={group} />;
+            })}
+            <div className="item item-right flex align-end justify-between">
+              <div className="item-2">
+                <strong>Cidade</strong>
+                <select><option value="">Todas</option></select>
+              </div>
+              <div className="item-2">
+                <strong>Bairro</strong>
+                <select><option value="">Todos</option></select>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section id="advanced-filters">
-        <div className="container">
           <div className="filter-buttons-group">
             <div className="filter-buttons-item">
               <strong>Quartos</strong>

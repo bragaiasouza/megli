@@ -327,7 +327,6 @@ input[type=submit], button { transition: all .5s ease; }
 .filter-toggle-button::after { display: block; width: 10px; height: 6px; background: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23DB9F02' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat; content: ''; transition: transform .3s ease; }
 .filter-toggle-button[aria-expanded='true']::after { transform: rotate(180deg); }
 #filter.is-collapsed { display: none; }
-#filter.is-collapsed ~ #advanced-filters { display: none; }
 #filter .container { gap: 40px; padding: 20px; border: 1px solid var(--yellow); border-radius: 20px; }
 #filter strong { display: block; margin-bottom: 12px; color: var(--yellow2); font-size: 14px; }
 #filter .item { position: relative; flex: 1; }
@@ -342,7 +341,7 @@ input[type=submit], button { transition: all .5s ease; }
 #filter select { flex: 1; width: 100%; padding: 12px 20px; border: 1px solid #E3E3E2; border-radius: 40px; font-size: 14px; white-space: nowrap; }
 
 /* estate */
-#estate { margin-bottom: 100px; padding-top: 28px; }
+#estate { margin-bottom: 100px; }
 #estate .results-info { margin-bottom: 28px; font-size: 14px; color: var(--darkyellow); }
 #estate .grid { margin-bottom: 40px; grid-template-columns: repeat(3, 1fr); grid-gap: 28px; grid-gap-row: 40px; }
 #estate .grid.is-loading { pointer-events: none; }
@@ -547,15 +546,17 @@ html[data-hygraph='connecting'] body[data-page='property'] #gallery .splide__sli
     border-radius: 32px;
 }
 
-/* advanced filters */
-#advanced-filters { background-color: #FAFAFA; border-bottom: 1px solid #E3E3E2; padding-bottom: 28px; }
-.filter-buttons-group { display: flex; justify-content: space-between; gap: 20px; }
-.filter-buttons-item strong { display: block; font-size: 14px; color: var(--primary); margin-bottom: 12px; }
+/* filter buttons */
+.filter-main { display: flex; align-items: flex-end; justify-content: space-between; padding-bottom: 28px; border-bottom: 1px solid #E3E3E2; margin-bottom: 28px; gap: 40px; }
+.filter-buttons-group { display: flex; justify-content: space-between; gap: 20px; width: 100%; }
+.filter-buttons-item { padding-right: 28px; border-right: 1px solid #E3E3E2; }
+.filter-buttons-item:last-child { border-right: none; padding-right: 0; }
+.filter-buttons-item strong { display: block; font-size: 14px; color: var(--yellow2); margin-bottom: 12px; }
 .filter-buttons { flex-wrap: wrap; }
 .gap-12 { gap: 12px; }
-.filter-btn { padding: 10px 20px; border: 1px solid #E3E3E2; border-radius: 24px; background-color: #fff; color: var(--primary); font-size: 13px; cursor: pointer; transition: all .2s ease; }
-.filter-btn:hover { border-color: var(--yellow); background-color: var(--lightyellow); }
-.filter-btn.active { background-color: var(--yellow); border-color: var(--yellow); color: #fff; }
+.filter-btn { padding: 10px 20px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid #E3E3E2; border-radius: 24px; background-color: transparent; color: var(--primary); font-size: 14px; cursor: pointer; transition: all .2s ease; }
+.filter-btn:hover { background-color: #E3E3E2; }
+.filter-btn.active { background-color: #A7A8A9; border-color: #A7A8A9; color: #fff; }
 
 /* pagination */
 .pagination { display: flex; justify-content: center; }
@@ -707,6 +708,10 @@ html[data-hygraph='connecting'] body[data-page='property'] #gallery .splide__sli
     #filter { padding: 0px 20px; }
     #filter .container { flex-direction: column; }
     #filter .item { width: 100%; }
+    .filter-main { flex-wrap: wrap; }
+    .filter-buttons-group { flex-direction: column; gap: 0; }
+    .filter-buttons-item { padding-right: 0; padding-bottom: 20px; border-right: none; border-bottom: 1px solid #E3E3E2; margin-bottom: 20px; }
+    .filter-buttons-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
 
     #talk { padding: 0px 20px; }
 
@@ -882,7 +887,7 @@ html[data-hygraph='connecting'] body[data-page='property'] #gallery .splide__sli
     #banner2 figure { width: 100%; display: flex; justify-content: center; overflow: hidden; margin-top: 40px; }
     #banner2 figure img { max-width: 85%; margin-bottom: -3px; }
 
-    #advanced-filters { background: transparent; border: none; padding: 20px; margin-top: 20px; border-top: 1px solid var(--yellow); }
+    .filter-main { padding-bottom: 20px; margin-bottom: 20px; }
     .filter-buttons-group { flex-direction: column; gap: 24px; }
 
     #estate .grid { grid-template-columns: 1fr; }
