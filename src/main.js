@@ -543,6 +543,34 @@ function initHomeSplide() {
   homeSlide.mount();
 }
 
+function initContactForm() {
+  var selectImovel = document.querySelector('#contact-imovel');
+
+  if (!selectImovel) {
+    return;
+  }
+
+  var imovels = null;
+
+  if (propertiesPayload && propertiesPayload.data && propertiesPayload.data.imovels) {
+    imovels = propertiesPayload.data.imovels;
+  } else if (window.allImovelsForContact) {
+    imovels = window.allImovelsForContact;
+  }
+
+  if (!imovels || !imovels.length) {
+    return;
+  }
+
+  imovels.forEach(function (imovel) {
+    var code = imovel.id ? imovel.id.slice(0, 6).toUpperCase() : 'XXXXXX';
+    var optionEl = document.createElement('option');
+    optionEl.value = imovel.id;
+    optionEl.textContent = 'COD.' + code + ' - ' + (imovel.nome || '');
+    selectImovel.appendChild(optionEl);
+  });
+}
+
 function initGallerySplide() {
   var gallery = document.querySelector('#gallery.splide');
 
@@ -591,4 +619,5 @@ export async function initDomApp() {
   initLightbox();
   initHomeSplide();
   initGallerySplide();
+  initContactForm();
 }

@@ -236,7 +236,7 @@ export function SiteFooter() {
         </div>
         <div className="creci">
           <p>CRECI 031996J</p>
-          <p className="devz">Desenvolvido por <img src="/assets/img/logo-devz.svg" alt="DevzDesign" /></p>
+          <p className="devz">Desenvolvido por <a href="https://www.devzdesign.com.br" title="DevzDesign" target="_blank" rel="noopener noreferrer"><img src="/assets/img/logo-devz.svg" alt="DevzDesign" /></a></p>
         </div>
       </div>
     </footer>
