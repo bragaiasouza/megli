@@ -221,6 +221,12 @@ function renderProperties(data) {
   var currentSearchTerm = searchParams.get('q') || '';
   var catalogSearchInput = document.querySelector('#catalog-search .search-box input');
   var catalogSearchBtn = document.querySelector('#catalog-search .search-btn');
+  var quartoSlider = document.querySelector('#quarto-slider');
+  var banheiroSlider = document.querySelector('#banheiro-slider');
+  var vagaSlider = document.querySelector('#vaga-slider');
+  var currentQuartoMin = 0;
+  var currentBanheiroMin = 0;
+  var currentVagaMin = 0;
 
   if (catalogSearchInput && currentSearchTerm) {
     catalogSearchInput.value = currentSearchTerm;
@@ -408,6 +414,18 @@ function renderProperties(data) {
         }
       }
 
+      if (currentQuartoMin > 0 && (item.quarto || 0) < currentQuartoMin) {
+        return false;
+      }
+
+      if (currentBanheiroMin > 0 && (item.banheiro || 0) < currentBanheiroMin) {
+        return false;
+      }
+
+      if (currentVagaMin > 0 && (item.vaga || 0) < currentVagaMin) {
+        return false;
+      }
+
       return true;
     });
 
@@ -578,6 +596,51 @@ function renderProperties(data) {
     catalogSearchBtn.addEventListener('click', function () {
       currentSearchTerm = catalogSearchInput ? catalogSearchInput.value.trim() : '';
       currentPage = 1;
+      renderGrid();
+    });
+  }
+
+  function updateSliderDisplay(slider, minSpan, maxSpan, sliderType) {
+    var value = parseInt(slider.value, 10);
+    minSpan.textContent = value;
+    if (sliderType === 'quarto' && value === 5) {
+      maxSpan.textContent = '5+';
+    } else if ((sliderType === 'banheiro' || sliderType === 'vaga') && value === 4) {
+      maxSpan.textContent = '4+';
+    } else {
+      maxSpan.textContent = value;
+    }
+  }
+
+  if (quartoSlider) {
+    var quartoMinSpan = document.querySelector('#quarto-min');
+    var quartoMaxSpan = document.querySelector('#quarto-max');
+    quartoSlider.addEventListener('input', function () {
+      currentQuartoMin = parseInt(quartoSlider.value, 10);
+      currentPage = 1;
+      updateSliderDisplay(quartoSlider, quartoMinSpan, quartoMaxSpan, 'quarto');
+      renderGrid();
+    });
+  }
+
+  if (banheiroSlider) {
+    var banheiroMinSpan = document.querySelector('#banheiro-min');
+    var banheiroMaxSpan = document.querySelector('#banheiro-max');
+    banheiroSlider.addEventListener('input', function () {
+      currentBanheiroMin = parseInt(banheiroSlider.value, 10);
+      currentPage = 1;
+      updateSliderDisplay(banheiroSlider, banheiroMinSpan, banheiroMaxSpan, 'banheiro');
+      renderGrid();
+    });
+  }
+
+  if (vagaSlider) {
+    var vagaMinSpan = document.querySelector('#vaga-min');
+    var vagaMaxSpan = document.querySelector('#vaga-max');
+    vagaSlider.addEventListener('input', function () {
+      currentVagaMin = parseInt(vagaSlider.value, 10);
+      currentPage = 1;
+      updateSliderDisplay(vagaSlider, vagaMinSpan, vagaMaxSpan, 'vaga');
       renderGrid();
     });
   }

@@ -67,6 +67,39 @@ export default function PropertiesCatalogPage() {
           </div>
         </div>
       </section>
+      <section id="advanced-filters">
+        <div className="container">
+          <div className="filter-sliders flex align-center justify-between">
+            <div className="slider-item">
+              <label>
+                <strong>Quartos</strong>
+                <span className="slider-value"><span id="quarto-min">0</span> - <span id="quarto-max">5+</span></span>
+              </label>
+              <div className="slider-track">
+                <input type="range" id="quarto-slider" className="slider" min="0" max="5" value="0" />
+              </div>
+            </div>
+            <div className="slider-item">
+              <label>
+                <strong>Banheiros</strong>
+                <span className="slider-value"><span id="banheiro-min">0</span> - <span id="banheiro-max">4+</span></span>
+              </label>
+              <div className="slider-track">
+                <input type="range" id="banheiro-slider" className="slider" min="0" max="4" value="0" />
+              </div>
+            </div>
+            <div className="slider-item">
+              <label>
+                <strong>Vagas</strong>
+                <span className="slider-value"><span id="vaga-min">0</span> - <span id="vaga-max">4+</span></span>
+              </label>
+              <div className="slider-track">
+                <input type="range" id="vaga-slider" className="slider" min="0" max="4" value="0" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="estate">
         <div className="container">
           <div className="results-info">
