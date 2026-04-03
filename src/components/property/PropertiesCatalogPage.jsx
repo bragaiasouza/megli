@@ -69,6 +69,9 @@ export default function PropertiesCatalogPage() {
       </section>
       <section id="estate">
         <div className="container">
+          <div className="results-info">
+            <span id="results-count"></span>
+          </div>
           <div>
             <ul className="grid">
               {PLACEHOLDER_PROPERTIES.map(function (property) {

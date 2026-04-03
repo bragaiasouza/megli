@@ -436,6 +436,12 @@ function renderProperties(data) {
 
     renderPagination(items.length);
 
+    var resultsCount = document.querySelector('#results-count');
+    if (resultsCount) {
+      var count = items.length;
+      resultsCount.textContent = count + (count === 1 ? ' imóvel encontrado' : ' imóveis encontrados');
+    }
+
     if (gridSignature === lastGridSignature) {
       return;
     }
