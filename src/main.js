@@ -600,6 +600,28 @@ function initGallerySplide() {
   }).mount();
 }
 
+function initHeaderScroll() {
+  var header = document.querySelector('#header');
+  if (!header) {
+    return;
+  }
+
+  var threshold = 50;
+  var lastScrollY = 0;
+
+  window.addEventListener('scroll', function () {
+    var currentScrollY = window.scrollY;
+
+    if (currentScrollY > threshold) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+
+    lastScrollY = currentScrollY;
+  }, { passive: true });
+}
+
 export async function initDomApp() {
   if (hasInitialized) {
     return;
@@ -614,6 +636,7 @@ export async function initDomApp() {
   initHeroRotator();
   initHeroSearch();
   initFilterToggle();
+  initHeaderScroll();
   propertiesPayload = await bootHygraph(document.body.dataset.page);
   initPropertiesNavigation();
   initLightbox();
