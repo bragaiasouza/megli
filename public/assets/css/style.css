@@ -347,6 +347,7 @@ input[type=submit], button { transition: all .5s ease; }
 /* estate */
 #estate { margin-bottom: 100px; }
 #estate .results-info { margin-bottom: 28px; font-size: 14px; color: var(--darkyellow); }
+#estate .results-info select { width: auto; padding: 8px 40px 8px 12px; font-size: 14px; border: 1px solid #E3E3E2; border-radius: 6px; background-color: #fff; color: var(--primary); }
 #estate .grid { margin-bottom: 40px; grid-template-columns: repeat(3, 1fr); grid-gap: 28px; grid-gap-row: 40px; }
 #estate .grid.is-loading { pointer-events: none; }
 #estate article figure { position: relative; width: 100%; height: auto; aspect-ratio: 16/9; margin-bottom: 20px; border-radius: 12px; background-color: #000; overflow: hidden; }
@@ -895,6 +896,8 @@ html[data-hygraph='connecting'] body[data-page='property'] #gallery .splide__sli
     .filter-main { padding-bottom: 20px; margin-bottom: 20px; }
     .filter-buttons-group { flex-direction: column; gap: 24px; }
 
+    #estate .results-info { flex-direction: column; align-items: flex-start; gap: 12px; }
+    #estate .results-info select { width: 100%; }
     #estate .grid { grid-template-columns: 1fr; }
 
     #contact header h1 { font-size: 36px; }

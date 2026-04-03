@@ -219,6 +219,7 @@ function renderProperties(data) {
   var initialCity = searchParams.get('cidade') || '';
   var initialBairro = searchParams.get('bairro') || '';
   var currentSearchTerm = searchParams.get('q') || '';
+  var currentSortValue = searchParams.get('sort') || 'relevance';
   var catalogSearchInput = document.querySelector('#catalog-search .search-box input');
   var catalogSearchBtn = document.querySelector('#catalog-search .search-btn');
   var currentQuartoMin = 0;
@@ -309,6 +310,12 @@ function renderProperties(data) {
       url.searchParams.set('bairro', bairroValue);
     } else {
       url.searchParams.delete('bairro');
+    }
+
+    if (currentSortValue && currentSortValue !== 'relevance') {
+      url.searchParams.set('sort', currentSortValue);
+    } else {
+      url.searchParams.delete('sort');
     }
 
     window.history.replaceState({}, '', url);
@@ -425,6 +432,41 @@ function renderProperties(data) {
 
       return true;
     });
+
+    // Helper function to get price based on category
+    function getItemPrice(item) {
+      if (categoryRoute === 'venda') {
+        return parseFloat(item.precoVenda || 0);
+      } else if (categoryRoute === 'aluguel') {
+        return parseFloat(item.precoAluguel || 0);
+      } else if (categoryRoute === 'temporada') {
+        return parseFloat(item.precoTemporada || 0);
+      }
+      // Default: return the first available price
+      return parseFloat(item.precoVenda || item.precoAluguel || item.precoTemporada || 0);
+    }
+
+    // Apply sorting
+    if (currentSortValue === 'relevance') {
+      items.sort(function (a, b) {
+        // Prioritize featured properties
+        if (a.destaque && !b.destaque) return -1;
+        if (!a.destaque && b.destaque) return 1;
+        return 0;
+      });
+    } else if (currentSortValue === 'newest') {
+      items.sort(function (a, b) {
+        return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+      });
+    } else if (currentSortValue === 'price-low') {
+      items.sort(function (a, b) {
+        return getItemPrice(a) - getItemPrice(b);
+      });
+    } else if (currentSortValue === 'price-high') {
+      items.sort(function (a, b) {
+        return getItemPrice(b) - getItemPrice(a);
+      });
+    }
 
     var totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
 
@@ -622,6 +664,19 @@ function renderProperties(data) {
       renderGrid();
     });
   });
+
+  var sortSelect = document.querySelector('#sort-select');
+  if (sortSelect) {
+    // Sync select with URL value
+    sortSelect.value = currentSortValue;
+
+    sortSelect.addEventListener('change', function () {
+      currentSortValue = sortSelect.value;
+      currentPage = 1;
+      updatePageQuery(currentPage, citySelect ? citySelect.value : '', bairroSelect ? bairroSelect.value : '');
+      renderGrid();
+    });
+  }
 
   renderGrid();
 }

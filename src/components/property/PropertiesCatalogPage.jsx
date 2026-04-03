@@ -102,8 +102,14 @@ export default function PropertiesCatalogPage() {
       </section>
       <section id="estate">
         <div className="container">
-          <div className="results-info">
+          <div className="results-info flex align-center justify-between">
             <span id="results-count"></span>
+            <select id="sort-select" aria-label="Ordenar por">
+              <option value="relevance">Mais relevantes</option>
+              <option value="newest">Mais recentes</option>
+              <option value="price-low">Menor valor</option>
+              <option value="price-high">Maior valor</option>
+            </select>
           </div>
           <div>
             <ul className="grid">
