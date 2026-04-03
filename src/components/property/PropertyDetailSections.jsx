@@ -55,7 +55,7 @@ export default function PropertyDetailSections() {
     <>
       <div id="gallery-lightbox" className="lightbox" aria-hidden="true">
         <div className="lightbox__dialog">
-          <img className="lightbox__image" src="" alt="" />
+          <img className="lightbox__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" />
           <span className="lightbox__caption"></span>
           <button className="lightbox__close" aria-label="Fechar galeria"></button>
           <button className="lightbox__nav lightbox__nav--prev" aria-label="Imagem anterior"></button>
@@ -69,7 +69,7 @@ export default function PropertyDetailSections() {
             <div className="top flex justify-between align-center">
               <span>Apartamento</span>
               <div className="right flex align-center">
-                <span><a href="" title="Ver mapa"><LocationIcon /> Ver mapa</a></span>
+                <span><a href="#" title="Ver mapa"><LocationIcon /> Ver mapa</a></span>
                 <span>
                   <a href="#" title="Todas as fotos" data-open-gallery>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -946,7 +946,7 @@ function renderProperty(data) {
     othersBlock.style.display = imovel.precoCondominio || imovel.precoIptu ? '' : 'none';
   }
 
-  var mapButton = document.querySelector('#single article .top .right a[title="Ver mapa"]');
+  var mapButton = document.querySelector('a[title="Ver mapa"]');
   var photosButton = document.querySelector('[data-open-gallery]');
   var gallery = document.querySelector('#gallery');
   var mapMarkup = buildMapContent(imovel.mapa);
