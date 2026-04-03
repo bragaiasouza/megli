@@ -69,32 +69,34 @@ export default function PropertiesCatalogPage() {
       </section>
       <section id="advanced-filters">
         <div className="container">
-          <div className="filter-sliders flex align-center justify-between">
-            <div className="slider-item">
-              <label>
-                <strong>Quartos</strong>
-                <span className="slider-value"><span id="quarto-min">0</span> - <span id="quarto-max">5+</span></span>
-              </label>
-              <div className="slider-track">
-                <input type="range" id="quarto-slider" className="slider" min="0" max="5" value="0" />
+          <div className="filter-buttons-group">
+            <div className="filter-buttons-item">
+              <strong>Quartos</strong>
+              <div className="filter-buttons flex align-center gap-12">
+                <button type="button" className="filter-btn" data-filter="quarto" data-value="0">Qualquer</button>
+                <button type="button" className="filter-btn" data-filter="quarto" data-value="1">1+</button>
+                <button type="button" className="filter-btn" data-filter="quarto" data-value="2">2+</button>
+                <button type="button" className="filter-btn" data-filter="quarto" data-value="3">3+</button>
+                <button type="button" className="filter-btn" data-filter="quarto" data-value="4">4+</button>
               </div>
             </div>
-            <div className="slider-item">
-              <label>
-                <strong>Banheiros</strong>
-                <span className="slider-value"><span id="banheiro-min">0</span> - <span id="banheiro-max">4+</span></span>
-              </label>
-              <div className="slider-track">
-                <input type="range" id="banheiro-slider" className="slider" min="0" max="4" value="0" />
+            <div className="filter-buttons-item">
+              <strong>Banheiros</strong>
+              <div className="filter-buttons flex align-center gap-12">
+                <button type="button" className="filter-btn" data-filter="banheiro" data-value="0">Qualquer</button>
+                <button type="button" className="filter-btn" data-filter="banheiro" data-value="1">1+</button>
+                <button type="button" className="filter-btn" data-filter="banheiro" data-value="2">2+</button>
+                <button type="button" className="filter-btn" data-filter="banheiro" data-value="3">3+</button>
+                <button type="button" className="filter-btn" data-filter="banheiro" data-value="4">4+</button>
               </div>
             </div>
-            <div className="slider-item">
-              <label>
-                <strong>Vagas</strong>
-                <span className="slider-value"><span id="vaga-min">0</span> - <span id="vaga-max">4+</span></span>
-              </label>
-              <div className="slider-track">
-                <input type="range" id="vaga-slider" className="slider" min="0" max="4" value="0" />
+            <div className="filter-buttons-item">
+              <strong>Vagas</strong>
+              <div className="filter-buttons flex align-center gap-12">
+                <button type="button" className="filter-btn" data-filter="vaga" data-value="0">Qualquer</button>
+                <button type="button" className="filter-btn" data-filter="vaga" data-value="1">1+</button>
+                <button type="button" className="filter-btn" data-filter="vaga" data-value="2">2+</button>
+                <button type="button" className="filter-btn" data-filter="vaga" data-value="3">3+</button>
               </div>
             </div>
           </div>
