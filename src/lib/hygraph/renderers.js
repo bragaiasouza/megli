@@ -748,10 +748,29 @@ function renderProperty(data) {
           .join('')
       : '<p></p>');
 
+  function getIconForCharacteristic(characteristic) {
+    var iconMap = {
+      arCondicionado: '❄️',
+      banheiro: '🚿',
+      piscina: '🏊',
+      churrasqueira: '🔥',
+      garagem: '🚗',
+      academia: '💪',
+      varanda: '🪟',
+      jardim: '🌿',
+      elevador: '🛗',
+      wifi: '📶',
+      cozinha: '🍳',
+      sala: '🛋️',
+    };
+    return iconMap[characteristic] || '✓';
+  }
+
   featuredList.innerHTML = (imovel.caracteristicas || [])
     .map(function (item) {
       var label = item.replace(/([A-Z])/g, ' $1').replace(/^./, function (c) { return c.toUpperCase(); });
-      return '<span>' + label + '</span>';
+      var icon = getIconForCharacteristic(item);
+      return '<span>' + icon + label + '</span>';
     })
     .join('');
 

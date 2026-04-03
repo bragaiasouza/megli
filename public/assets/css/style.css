@@ -593,7 +593,8 @@ html[data-hygraph='connecting'] body[data-page='property'] #gallery .splide__sli
 #single article .featured:has(.list:empty) { display: none; }
 #single article .featured h2 { display: block; margin-bottom: 40px; color: var(--yellow2); font-size: 24px; }
 #single article .featured .list { flex-wrap: wrap; gap: 12px; }
-#single article .featured .list span { padding: 12px 20px; border: 1px solid #E3E3E2; border-radius: 40px; font-size: 14px; }
+#single article .featured .list span { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border: 1px solid #E3E3E2; border-radius: 40px; font-size: 14px; }
+#single article .featured .list span svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--yellow2); }
 #single article .more { display: flex; background-color: var(--lightyellow); border-radius: 16px; }
 #single article .more .left { width: 60%; padding-left: 40px; }
 #single article .more .left h3 { display: block; font-size: 32px; color: var(--darkyellow); }
