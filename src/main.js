@@ -563,10 +563,10 @@ function initContactForm() {
   }
 
   imovels.forEach(function (imovel) {
-    var code = imovel.id ? imovel.id.slice(0, 6).toUpperCase() : 'XXXXXX';
+    var code = imovel.codigo || 'COD.XXXXXX';
     var optionEl = document.createElement('option');
     optionEl.value = imovel.id;
-    optionEl.textContent = 'COD.' + code + ' - ' + (imovel.nome || '');
+    optionEl.textContent = code + ' - ' + (imovel.nome || '');
     selectImovel.appendChild(optionEl);
   });
 }
