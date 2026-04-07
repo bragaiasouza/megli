@@ -580,7 +580,7 @@ function initGallerySplide() {
 
   new Splide(gallery, {
     type: 'slide',
-    fixedWidth: 'calc((100% - 72px) / 3.5)',
+    fixedWidth: '600px',
     perMove: 1,
     pagination: false,
     arrows: true,
