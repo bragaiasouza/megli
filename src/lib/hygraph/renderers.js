@@ -435,15 +435,21 @@ function renderProperties(data) {
 
     // Helper function to get price based on category
     function getItemPrice(item) {
+      var price = 0;
+
       if (categoryRoute === 'venda') {
-        return parseFloat(item.precoVenda || 0);
+        price = item.precoVenda;
       } else if (categoryRoute === 'aluguel') {
-        return parseFloat(item.precoAluguel || 0);
+        price = item.precoAluguel;
       } else if (categoryRoute === 'temporada') {
-        return parseFloat(item.precoTemporada || 0);
+        price = item.precoTemporada;
+      } else {
+        // Default: return the first available price
+        price = item.precoVenda || item.precoAluguel || item.precoTemporada;
       }
-      // Default: return the first available price
-      return parseFloat(item.precoVenda || item.precoAluguel || item.precoTemporada || 0);
+
+      var parsed = parseFloat(price);
+      return isNaN(parsed) ? 0 : parsed;
     }
 
     // Apply sorting
