@@ -513,18 +513,18 @@ function initHomeSplide() {
 
   var homeSlide = new Splide(slide, {
     type: 'slide',
-    fixedWidth: 'calc((100% - 72px) / 3.5)',
+    fixedWidth: '480px',
     focus: 0,
-    omitEnd: true,
     perMove: 1,
     gap: '24px',
     pagination: true,
     arrows: true,
     rewind: false,
     drag: true,
+    omitEnd: true,
     breakpoints: {
       1024: {
-        fixedWidth: 'calc((100% - 24px) / 2)',
+        fixedWidth: '480px',
         gap: '16px',
       },
       767: {

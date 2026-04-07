@@ -1,5 +1,4 @@
 import PropertySpecs from './PropertySpecs.jsx';
-import PropertyTagList from './PropertyTagList.jsx';
 import { InfoIcon, LocationIcon } from './PropertyIcons.jsx';
 
 var GALLERY_IMAGES = Array.from({ length: 5 }, function (_, index) {
@@ -32,7 +31,7 @@ function GallerySection() {
 function PropertySidebar() {
   return (
     <aside>
-      <PropertyTagList className="tags flex align-center" />
+      <div className="tags flex align-center"></div>
       <div className="price"><strong>Temporada</strong><span className="price-view"><small>R$</small>300,00 <b>/noite</b></span></div>
       <div className="price"><strong>Aluguel</strong><span className="price-view"><small>R$</small>4.000,00</span></div>
       <div className="price"><strong>Venda</strong><span className="price-view"><small>R$</small>1.200.000,00</span></div>

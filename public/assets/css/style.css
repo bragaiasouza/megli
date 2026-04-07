@@ -227,10 +227,10 @@ input[type=submit], button { transition: all .5s ease; }
 .slide article .top { margin: 6px 0px; }
 .slide article .top span.type { color: var(--yellow2); font-size: 12px; }
 .slide article .top span.code { padding: 6px 10px; font-size: 12px; border-radius: 6px; background-color: #F8F8F9; border: 1px solid #E3E3E2; text-transform: uppercase; color: var(--primary); }
-.slide article h3 { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 24px; line-height: 1.2; color: var(--primary); }
+.slide article h3 { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 20px; line-height: 1.2; color: var(--primary); }
 .slide article .info { gap: 28px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #E3E3E2; }
-.slide article .info span { display: flex; gap: 8px; align-items: center; color: var(--primary); }
-.slide figure { position: relative; width: 100%; height: 480px; margin-bottom: 20px; border-radius: 16px; background-color: #000; overflow: hidden; }
+.slide article .info span { display: flex; gap: 8px; align-items: center; color: var(--primary); font-size: 14px; }
+.slide figure { position: relative; width: 100%; height: 320px; margin-bottom: 20px; border-radius: 16px; background-color: #000; overflow: hidden; }
 .slide figure::after { display: none; }
 .slide figure img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; filter: none; transform: none; transition: none; will-change: auto; }
 .slide figure img.is-loaded { filter: none; transform: none; }
