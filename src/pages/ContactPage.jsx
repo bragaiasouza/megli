@@ -60,7 +60,7 @@ export default function ContactPage() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            query: `query { imovels(first: 500) { id nome } }`,
+            query: `query { imovels(first: 500) { id codigo nome } }`,
             variables: {}
           })
         });
@@ -68,10 +68,10 @@ export default function ContactPage() {
         var json = await response.json();
         if (json.data && json.data.imovels) {
           json.data.imovels.forEach(function (imovel) {
-            var code = imovel.id ? imovel.id.slice(0, 6).toUpperCase() : 'XXXXXX';
+            var code = imovel.codigo || 'COD.XXXXXX';
             var optionEl = document.createElement('option');
             optionEl.value = imovel.id;
-            optionEl.textContent = 'COD.' + code + ' - ' + (imovel.nome || '');
+            optionEl.textContent = code + ' - ' + (imovel.nome || '');
             selectImovel.appendChild(optionEl);
           });
         }
