@@ -84,7 +84,7 @@ function buildListingCard(imovel) {
   var image = (imovel.galeriaDeImagens || [])[0];
   var imageUrl = image ? image.url : '/assets/img/_temp/1.png';
   var imageAlt = image && image.fileName ? image.fileName : imovel.nome;
-  var code = imovel.id ? imovel.id.slice(0, 6).toUpperCase() : '000000';
+  var code = imovel.codigo || 'COD.000000';
   var pathSlug = slugify(imovel.nome);
   var propertyUrl = '/imovel/' + pathSlug + '/';
 
@@ -100,7 +100,7 @@ function buildListingCard(imovel) {
           <span class="locality">${imovel.cidade || ''}${imovel.bairro ? ' - ' + imovel.bairro : ''}</span>
           <div class="top flex align-center justify-between">
             <span class="type">Imóvel</span>
-            <span class="code">COD. ${code}</span>
+            <span class="code">${code}</span>
           </div>
           <h3>${imovel.nome || ''}</h3>
           <div class="info flex align-center">
@@ -411,7 +411,7 @@ function renderProperties(data) {
       }
 
       if (searchTerm) {
-        var code = item.id ? item.id.slice(0, 6).toUpperCase() : '';
+        var code = item.codigo || '';
         var name = (item.nome || '').toLowerCase();
         if (!name.includes(searchTerm) && !code.toLowerCase().includes(searchTerm)) {
           return false;

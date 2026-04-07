@@ -27,6 +27,7 @@ function propertySlugFromLocation() {
 
 var IMOVEL_FIELDS = `
   id
+  codigo
   destaque
   categoria
   fase
